@@ -13,17 +13,10 @@ public class Player
     public BufferedReader in;
     public PrintWriter out;
 
-    public Player(Socket socket)
+    public Player(Socket socket, BufferedReader in, PrintWriter out)
     {
         this.socket = socket;
-
-        try
-        {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        this.in = in;
+        this.out = out;
     }
 }

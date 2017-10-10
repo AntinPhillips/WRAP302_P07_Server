@@ -9,7 +9,7 @@ public class Game extends Thread
     public String roomCode;
     public boolean inSession;
     private ArrayList<Player> players;
-    int maxPlayers;
+    private int maxPlayers;
 
     public Game(String roomCode, int maxPlayers)
     {
@@ -29,7 +29,7 @@ public class Game extends Thread
         }
 
         //tell the new player about all the other players
-        //how many are there? and there names
+        //how many are there? and their names
         player.out.println(players.size());
         for (int i = 0; i < players.size(); i++)
             player.out.println(players.get(i).socket.getInetAddress().toString());

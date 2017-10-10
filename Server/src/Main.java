@@ -1,3 +1,4 @@
+import javax.xml.transform.sax.SAXTransformerFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -33,6 +34,7 @@ public class Main
             while (true)
             {
                 Socket socket = serverSocket.accept();
+                new ClientConnection(socket).start();
             }
 
         } catch (IOException e)
@@ -78,5 +80,10 @@ public class Main
                     return null;
 
         return null;
+    }
+
+    public static void addRoom(Game game)
+    {
+        games.add(game);
     }
 }

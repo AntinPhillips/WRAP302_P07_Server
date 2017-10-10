@@ -43,7 +43,7 @@ public class ClientConnection extends Thread
                     {
                         if (!game.isFull())
                         {
-                            Player player = new Player(socket);
+                            Player player = new Player(socket, in, out);
                             out.println(Main.JOIN_SUCCESSFUL);
                             game.addPlayer(player);
                         } else
@@ -61,10 +61,13 @@ public class ClientConnection extends Thread
                 {
                     String roomCode = Main.generateRoomCode();
                     int maxPlayers = Integer.parseInt(in.readLine());
-                    Player player = new Player(socket);
+                    Player player = new Player(socket, in, out);
 
                     Game game = new Game(roomCode, maxPlayers);
+                    Main.addRoom(game);
+
                     out.println(Main.JOIN_SUCCESSFUL);
+                    out.println(roomCode);
                     game.addPlayer(player);
                     game.start();
                     break;
