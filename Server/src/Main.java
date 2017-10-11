@@ -20,6 +20,12 @@ public class Main
     public static final String NEW_PLAYER = "7";
     public static final String GAME_STARTING = "8";
     public static final String PLAYER_READY = "9";
+    public static final String ROLL = "10";
+    public static final String END_TURN = "11";
+    public static final String DICE_VALUES = "12";
+    public static final String GAME_OVER = "13";
+    public static final String DISCONNECT = "14";
+    public static final String SAME_TURN = "14";
 
     private static ArrayList<Game> games;
 
@@ -85,5 +91,10 @@ public class Main
     public static void addRoom(Game game)
     {
         games.add(game);
+    }
+
+    public static void removeGame(Game game)
+    {
+        games.remove(game);
     }
 }

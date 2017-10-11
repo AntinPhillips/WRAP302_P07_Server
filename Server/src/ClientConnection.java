@@ -38,12 +38,13 @@ public class ClientConnection extends Thread
                 case Main.JOIN_GAME:
                 {
                     String roomCode = in.readLine();
+                    String name = in.readLine();
                     Game game = Main.getRoom(roomCode);
                     if (game != null)
                     {
                         if (!game.isFull())
                         {
-                            Player player = new Player(socket, in, out);
+                            Player player = new Player(socket, in, out, name);
                             out.println(Main.JOIN_SUCCESSFUL);
                             game.addPlayer(player);
                         } else
@@ -61,7 +62,8 @@ public class ClientConnection extends Thread
                 {
                     String roomCode = Main.generateRoomCode();
                     int maxPlayers = Integer.parseInt(in.readLine());
-                    Player player = new Player(socket, in, out);
+                    String name = in.readLine();
+                    Player player = new Player(socket, in, out, name);
 
                     Game game = new Game(roomCode, maxPlayers);
                     Main.addRoom(game);
